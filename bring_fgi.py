@@ -1,18 +1,17 @@
 from datetime import datetime, date, timedelta
 import math
-
-import sys
-sys.path.append(r'C:\\Python312\\Lib\\site-packages\\fear_and_greed')
-
 import pandas as pd
 import fear_and_greed
 import yfinance as yf
 
 def get_fear_and_greed():
     fg = fear_and_greed.get()
+    print("FGI: ",fg)
     fg_score = float(fg[0])
-    fg_score = round(fg_score,2)
+    fg_score = int(round(fg_score,0))
     fg_status = fg[1]
+    fg_date = fg[2].date()
+    print("fg_date : ",fg_date)
 
     return (fg_score, fg_status)
 
@@ -43,4 +42,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
